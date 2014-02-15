@@ -1,0 +1,47 @@
+{
+  "name": "chats",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [
+    "node",
+    "js"
+  ],
+  "bugs": "https://github.com/ShiningRay/chats/issues",
+  "author": {
+    "name": "代码之力",
+    "email": "tsowly@hotmail.com",
+    "url": "https://github.com/ShiningRay"
+  },
+  "homepage": "https://github.com/ShiningRay/chats",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//chats"
+  },
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "~3.4.8",
+    "socket.io": "~0.9.16",
+    "underscore": "~1.6.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-node-inspector": "~0.1.1",
+    "grunt-nodemon": "~0.1.1",
+    "grunt-concurrent": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-open": "~0.2.2",
+    "grunt-wait": "~0.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=0.8.0",
+    "npm": ">=1.2.10"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ]
+}
