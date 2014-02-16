@@ -1,21 +1,24 @@
 'use strict';
 var _ = require('underscore');
 
-function UsersController(user) {
-	var proto = UsersController.prototype;
+function UsersController(socket) {
+	var proto = UsersController.prototype,
+		self = this;
 	_.functions(proto).forEach(function (mth) {
-		user.socket.on(mth, proto[mth].bind(user));
+		socket.on(mth, proto[mth].bind(self));
 	});
 }
 UsersController.prototype = {
 	disconnect: function () {
-		this.disconnect();
+		this.user.disconnect();
 	},
-	sendchat: function (data) {
-		this.room.broadcast('updatechat', this.name, data);
+	say: function (data) {
+		this.room.addChat(this.user.name, data);
+		this.room.broadcast('say', this.user.name, data);
+
 	},
 	join: function (data) {
-		this.join(data);
+		this.user.join(data);
 	}
 };
 

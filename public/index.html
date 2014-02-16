@@ -36,33 +36,29 @@ var socket = io.connect(window.location.hostname);
 
 // on connection to server, ask for user's name with an anonmyous callback
 socket.on('connect', function() {
-  //call the server-side function 'adduser' and send one parameter (value of prompt)
-  //socket.emit('adduser', prompt("What's your name?"));
-var Chatroom = new Ractive({
-  el: 'chatroom',
-  template: '#chatroom-tmpl', 
-  data: {
-	chats: [],
-	users: [],
-	rooms: []
-  }
-});
+	//call the server-side function 'adduser' and send one parameter (value of prompt)
+	//socket.emit('adduser', prompt("What's your name?"));
+	var Chatroom = new Ractive({
+	  el: 'chatroom',
+	  template: '#chatroom-tmpl',
+	  data: {
+		chats: [],
+		users: [],
+		rooms: []
+	  }
+	});
 
-Chatroom.on( 'send', function (e) {
-  var c = this.get( 'newchat' );
-  if(!/^\s*$/.test(c)){
-	  socket.emit('sendchat', c);
-	  this.set( 'newchat', '');
-  }
-  e.original.preventDefault();
-});
-Chatroom.on( 'switchRoom', function(e){
-	console.log(this);
-	//socket.emit('switchRoom', 
-});
-socket.on('updatechat', function(username, data) {
-	Chatroom.get('chats').push({user: username, content: data});
-});
+	Chatroom.on( 'send', function (e) {
+	  var c = this.get( 'newchat' );
+	  if(!/^\s*$/.test(c)){
+		  socket.emit('say', c);
+		  this.set( 'newchat', '');
+	  }
+	  e.original.preventDefault();
+	});
+	socket.on('say', function(username, data) {
+		Chatroom.get('chats').push({user: username, content: data});
+	});
 });
 
   </script>
