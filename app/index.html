@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatroom</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+  <body>
+
+  <script id="chatroom-tmpl" type="text/ractive">
+  <div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+    <b>ROOMS</b>
+    <div id="rooms">
+		{{#rooms}}
+		<div>{{name}}</div>
+		{{/rooms}}
+	</div>
+  </div>
+  <div style="float:left;width:500px;height:250px;overflow:scroll-y;padding:10px;">
+    <div id="conversation">
+	{{#chats}}
+	  <b style="font-size:8px;">{{user}}</b>
+	  {{content}}<br>
+	{{/chats}}
+	</div>
+	<input id="data" name="newchat" value="{{newchat}}" style="width:200px;" required on-enter="send" />
+    <input type="button" id="datasend" value="send" on-click="send" />
+  </div>
+  </script>
+  <div id="chatroom"></div>
+  <!-- build:js app.js -->
+  <script src="bower_components/jquery/dist/jquery.js" type="text/javascript"></script>
+  <script src="bower_components/ractive/build/Ractive.js" type="text/javascript"></script>
+  <script src="bower_components/Ractive-events-keys/Ractive-events-keys.js" type="text/javascript"></script>
+  <script src="scripts/page.js" type="text/javascript"></script>
+  <script type="text/javascript" charset="utf-8" src="scripts/application.js"></script>
+  <!-- endbuild -->
+  </body>
+</html>

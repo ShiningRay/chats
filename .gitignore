@@ -1,5 +1,7 @@
 
 npm-debug.log
+bower_components/
+app/bower_components/
 node_modules/
 temp/
 dist/
